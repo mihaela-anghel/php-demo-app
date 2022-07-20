@@ -1,0 +1,40 @@
+Options +FollowSymlinks
+RewriteEngine on
+
+#301 permanent redirect of domain.com to www.domain.com
+#=============================================================
+RewriteCond %{HTTP_HOST} !^(www\.|$) [NC]
+RewriteRule ^ http://www.%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+#remove trilling slashes
+#=============================================================
+#RewriteCond %{REQUEST_FILENAME} !-d
+#RewriteCond %{REQUEST_URI} ^(.+)/$
+#RewriteRule ^(.+)/$  /$1 [R=301,L] 
+
+#HTTPS
+#=============================================================
+RewriteCond %{HTTPS} off
+RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+#image_builder
+#=============================================================
+RewriteRule image/([a-zA-Z0-9_]+)/(.*)/(.*)$ myclasses/image_manipulation/index.php?options=$1&folder=$2&image_name=$3 [L]
+
+#codeigniter
+#=============================================================
+#RewriteCond %{QUERY_STRING} ^(PHPSESSID=.*)$ [NC]
+
+RewriteRule ^sitemap.xml$ uploads/sitemap/sitemap.xml [NC]
+
+RewriteCond $1 !^(index\.php|images|css|uploads|tinymce|js|myclasses|fonts|underconstruction.htm|robots.txt|phpinfo.php|theme)
+RewriteRule ^(.*)$ index.php?/$1 [QSA]
+
+#AuthUserFile
+#=============================================================
+#AuthUserFile /home/webdesig/http/premium/web9/60/31/52402231/htdocs/shop/.htpasswd
+#AuthType Basic
+#AuthName "My Secret Folder"
+#Require valid-user
+
+

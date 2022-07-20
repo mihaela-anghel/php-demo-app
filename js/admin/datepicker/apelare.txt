@@ -1,0 +1,10 @@
+<script src="<?php echo base_url();?>js/datepicker/jquery.date.js" type="text/javascript" language="javascript"></script>
+<script src="<?php echo base_url();?>js/datepicker/jquery.cal.js" type="text/javascript" language="javascript"></script>
+<link rel="stylesheet" href="<?php echo base_url();?>js/datepicker/flora.css" type="text/css" media="screen">
+
+<input name="published_date" id="published_date" value="<?php echo set_value('published_date')?>" class="input" size="10" maxlength="10" readonly />
+	<script type="text/javascript">
+	jQuery(document).ready(function(){
+	jQuery('#published_date').attachDatepicker({ rangeSelect: false, firstDay: 1, dateFormat: 'yy-mm-dd' }); 
+	});
+	</script> 

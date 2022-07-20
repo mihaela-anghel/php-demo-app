@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /css/
+Disallow: /js/
+Disallow: /fonts/
+Disallow: /myclasses/
+Disallow: /uploads/competitions/diploma/
+Disallow: /uploads/competitions/projects/
